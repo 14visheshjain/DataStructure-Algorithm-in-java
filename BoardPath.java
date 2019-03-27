@@ -1,41 +1,29 @@
-/*
- * @author Vishesh Jain
- * @date   25-March-2019
- */
-package lecture8;
+package lecture9;
 
-import java.util.ArrayList;
-import java.util.Scanner;
+//import java.util.Scanner;
 
 public class BoardPath {
-
 	public static void main(String[] args) {
-		Scanner a = new Scanner(System.in);
-		int cur = a.nextInt();
-		int end = a.nextInt();
-		System.out.println(ways(cur, end));
+		boardpath(0, 10	, "");
+	}
+//	public static void main(String[] args) {
+////		int cur =0;
+////		int end = 3;
+//		boardpath(0, 3, "");
+//
+//	}
+
+	public static void boardpath(int cur, int end, String ans) {
+		if (end == cur) {
+			System.out.println(ans);
+
+			return;
+		}
+
+		for (int dice = 1; dice <= 6 && dice + cur <= end; dice++) {
+
+			boardpath(cur + dice, end, ans + dice);
+		}
 
 	}
-
-public static ArrayList<String> ways( int cur , int end){
-	if(end == cur) {
-		ArrayList<String> rr = new ArrayList<>();
-		rr.add("\n");
-		return rr;
-	}
-	if(cur> end) {
-		ArrayList<String> rr = new ArrayList<>();
-		
-		return rr;
-	}
-	ArrayList<String> mr = new ArrayList<>();
-	ArrayList<String> rr = new ArrayList<>();
-	for(int dice = 1 ; dice<=6 ; dice++) {
-	     rr = ways(cur + dice , end);
-	    for(String val : rr) {
-	     mr.add( dice + val);
-	     }
-      }
-return mr;
-   }
 }

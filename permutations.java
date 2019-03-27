@@ -1,10 +1,5 @@
-/*
- * @author Vishesh Jain
- * @date   25-March-2019
- */
-package lecture8;
+package lecture9;
 
-import java.util.ArrayList;
 import java.util.Scanner;
 
 public class permutations {
@@ -12,28 +7,21 @@ public class permutations {
 	public static void main(String[] args) {
 		Scanner a = new Scanner(System.in);
 		String s = a.next();
-		System.out.println(permutations(s).size());
+		permutations(s ,"");
+
 	}
 
-	public static ArrayList<String> permutations(String s) {
-
+	public static void permutations(String s, String ans) {
+       if(s.length()==0) {
+    	   System.out.println(ans);
+    	   return;
+       }
 		char ch = s.charAt(0);
-		if (s.length() == 1) {
-			ArrayList<String> rr = new ArrayList<>();
-			rr.add("" + ch);
-			return rr;
-		}
-		ArrayList<String> rr = permutations(s.substring(1));
-		ArrayList<String> mr = new ArrayList<>();
-		for (int i = 0; i < rr.size(); i++) {
-			StringBuilder temp = new StringBuilder(rr.get(i));
-			for (int j = 0; j <= temp.length(); j++) {
-				temp.insert(j, ch);
-				mr.add(temp.toString());
-				temp.deleteCharAt(j);
-			}
-
-		}
-		return mr;
+       for(int i = 0 ; i<= ans.length() ;i++ ) {
+    	  String temp = ans.substring(0 ,i) + ch + ans.substring(i) ; 
+    	   permutations(s.substring(1) ,temp );
+       }
+       
 	}
 }
+                    

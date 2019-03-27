@@ -1,40 +1,28 @@
-/*
- * @author Vishesh Jain
- * @date   25-March-2019
- */
-package lecture8;
+package lecture9;
 
-import java.util.ArrayList;
 import java.util.Scanner;
 
-public class KPC {
-  static Scanner a = new Scanner(System.in);
-	public static void main(String[] args) {
-	String s = a.next();
-	System.out.println(kpc(s).size());
+public class kpc {
 
+	public static void main(String[] args) {
+		Scanner a = new Scanner(System.in);
+		String s = a.next();
+		kpc(s, "");
 	}
-	public static ArrayList<String> kpc(String s){
+
+	public static void kpc(String s, String ans) {
 		if (s.length() == 0) {
-			ArrayList<String> recres = new ArrayList<>();
-			recres.add("");
-			return recres;
+			System.out.println(ans);
+			return;
 		}
 		char ch = s.charAt(0);
-		ArrayList<String> recres = kpc(s.substring(1));
-		
-		 String tempst = getCode(ch);
-		 ArrayList<String> myres = new ArrayList<>();
-		for(int i = 0 ; i<tempst.length(); i++) {
-			char take = tempst.charAt(i) ;
-	       		for(String req : recres) {
-				myres.add(take+req   );
-			  }
-	       	}
-		
-		
-		return myres;
+		String temp = getCode(ch);
+		String ros = s.substring(1);
+		for (int i = 0; i < temp.length(); i++) {
+			kpc(ros, ans + temp.charAt(i));
+		}
 	}
+
 	public static String getCode(char ch) {
 
 		if (ch == '1')
@@ -59,6 +47,6 @@ public class KPC {
 			return "@#";
 		else
 			return "";
-	
-}
+
+	}
 }
