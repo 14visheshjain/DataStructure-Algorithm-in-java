@@ -1,7 +1,7 @@
 package lecture9;
 
 //import java.util.Scanner;
-
+shi se pahuchaya nhi tune board path shi kr jjjjjjjaaaaaaaaaaaddddddddddduuuuuuuuuuuuu
 public class BoardPath {
 	public static void main(String[] args) {
 		boardpath(0, 10	, "");
